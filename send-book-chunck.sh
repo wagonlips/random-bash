@@ -4,7 +4,7 @@ CHUNKS=`ls /home/sean/Documents/text-blobs/the-brothers-karamazov/ | wc -l`
 # Load the current iteration number.
 VALUE=`cat /home/sean/Documents/text-blobs/iter-number`
 # Because the chunks are numbered starting with 000, add 1 so it sounds right.
-CHUNKNUMBER=$(($VALUE + 1))
+CHUNKNUMBER=$((10#$VALUE + 1))
 # Use the plural noun until only one chunk remains.
 if [ `expr $CHUNKS - $CHUNKNUMBER` == 1 ] 
 then
@@ -25,5 +25,5 @@ myblob = TextBlob(data)
 $STORY
 MESSAGE
 # Increment the iteration number.
-let "VALUE += 1"
-echo $(printf "%03d" $VALUE) > /home/sean/Documents/text-blobs/iter-number
+ITERNUMBER=$((10#$VALUE + 1))
+echo $(printf "%03d" $ITERNUMBER) > /home/sean/Documents/text-blobs/iter-number
